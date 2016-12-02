@@ -2,7 +2,8 @@
 
 webpack config 文档 （done）
 ad redux 学习 
-ad react 生命周期render
+ad react 生命周期render （done）
+
 
 
 #w

@@ -1,4 +1,5 @@
 [https://segmentfault.com/a/1190000003691119]()
+[https://zhuanlan.zhihu.com/p/20328570]()
 
 ###componentWillMount：
 在组件render之前执行，并且永远都只执行一次。由于这个方法始终只执行一次，所以如果在这里定义了setState方法之后，页面永远都只会在加载前更新一次。
