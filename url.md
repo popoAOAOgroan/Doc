@@ -3,6 +3,7 @@
 gitLab: 3-Patient -branch dev
 
 患者线上：http://m.mingyizhudao.com/
+患者端线上ip测试：http://121.41.82.86:8002/  
 gitLab: 3-Patient -branch master
 
 患者demo测试： http://121.40.127.64:8977/
