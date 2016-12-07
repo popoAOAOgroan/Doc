@@ -3,13 +3,16 @@
 webpack config 文档 （done）
 ad redux 学习 
 ad react 生命周期render （done）
-ad mixin
-
+ad mixin 
+ad 渲染过程 源码学习http://purplebamboo.github.io/2015/09/15/reactjs_source_analyze_part_one/
+ad setState than findDOMNode??
+ad map retrun true
+react scrop
 
 #w
 
 ad doc 文档 (done)
-ad 公共components【 radio（done）, toast(done), comfirm(done), alert(done), spinner(done)，iscroll（done）, input, button, requestHttp->pomise】
+ad 公共components【 radio（done）, toast(done), comfirm(done), alert(done), spinner(done)，iscroll（done）, input(done)[minLength(done)，maxLength(done)], textarea(done), button, date, form, requestHttp->pomise】
 ad 公共css整理 (done)
 ad 目录结构调整 (done)
 ad input css分离 (done)
