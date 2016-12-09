@@ -15,6 +15,7 @@ gitLab: demo -branch dev
 gitLab: demo -branch master
 
 ad测试：demowap.mingyizhudao.com/#/songdonglei
+ad测试ip：http://121.40.127.64:8022/#/sina
 gitLab: ad -branch dev
 上传编译后文件夹：dist //npm run dev
 

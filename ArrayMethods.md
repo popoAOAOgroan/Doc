@@ -1,5 +1,7 @@
 #Array methods [every(),filter(),map(),some(),forEach()]
 
+[https://coderwall.com/p/_ggh2w/the-array-native-every-filter-map-some-foreach-methods
+]()
 
 *key = v，val = i，array	= array
 *以下均为构造函数。
