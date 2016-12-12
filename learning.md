@@ -11,6 +11,9 @@ react scope and arrow function
 ad module extend and class
 ad webpack各个参数（ how to change img outpath(can't)）(done)
 ad ref（how to get form value (done => setstate)）
+学习class-》test-》建立react seed
+搭建php环境
+
 
 #ad
 
@@ -30,4 +33,4 @@ demo login(done)
 
 #at-react
  refresh bug
- release a react seed
+ release a react seed （done）
