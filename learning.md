@@ -13,11 +13,11 @@ ad webpack各个参数（ how to change img outpath(can't)）(done)
 ad ref（how to get form value (done => setstate)）
 学习class-》test-》建立react seed （done）
 搭建php环境
-学习写unit tets
-学习react-native
+学习写unit tets, 算法
+学习react-native, redux, ui lab
 学习express error handle
 学习nodejs websockte
-
+箭头函数
 
 #ad
 
