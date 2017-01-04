@@ -22,3 +22,11 @@ gitLab: ad -branch dev
 ad线上：demowap.mingyizd.com/#/songdonglei
 gitLab: ad -branch master
 上传编译后文件夹：dist //npm run build
+
+order测试：http://h5.dev.mingyizd.com/client/patient/#/layout/me/orders?userid=100468&username=18556506973&status=0
+gitlab: h5-patient -branch release/日期
+上传编译后文件夹： dist
+
+医责险线上：http://h5.mingyizhudao.com/medicine/insurance/#/layout/insurance
+gitlab：h5-medical-insurance -branch master
+上传编译后文件夹： dist

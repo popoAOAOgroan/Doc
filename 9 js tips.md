@@ -60,3 +60,22 @@ return str;`
 此方法不受额外字符串对象的影响，而且执行速度更快。
 
 ###Binding Methods to Objects
+在用JS时常常会遇到想分配一个对象方法到一个事件处理器上的情况。而问题是事件处理器只能背HTML元素调用，即使是原生绑定事件也是这样。为了克服这个，我用了一个方法来绑定一个方法到一个对象上；这里需要传入一个对象和一个对象方法，返回的一个函数永远会调用这个对象中的方法。这是我从Prototype中发现的小技巧，下面就是怎么在不使用prototype的情况下使用对象函数：
+`function bind(obj, method) {
+  return function() { return method.apply(obj, arguments); }
+}
+var obj = {
+  msg: 'Name is',
+  buildMessage: function (name) {
+    return this.msg + ' ' + name;
+  }
+}
+alert(obj.buildMessage('John')); // displays: Name is John
+
+f = obj.buildMessage;
+alert(f('Smith')); // displays: undefined Smith
+
+g = bind(obj, obj.buildMessage);
+alert(g('Smith')); // displays: Name is Smith
+`
+###Sorting With a Custom Comparison Function
