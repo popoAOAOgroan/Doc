@@ -114,10 +114,66 @@ Array.sort()的易用性在于它可以支持更复杂的排序方式，比如�
 有理由说，使用浏览器原生的排序方法可以比实施一个js排序方法更有效。当然，如果有可能，数据应当在服务端就被排序好，所以非必要下无需使用（例如，当你希望在一个页面里得到多个排序列表的话）。
 
 ###Assertion
+断言是一种常用的debug技术。用以确保一个代码块的值在执行中是否正确。如果值为false，那可能暗示着有bug存在。js缺少内置断言方法，但幸运的是你可以自己写一个。
+`function AssertException(message) { this.message = message; }
+AssertException.prototype.toString = function () {
+  return 'AssertException: ' + this.message;
+}
+function assert(exp, message) {
+  if (!exp) {
+    throw new AssertException(message);
+  }
+}`
+自己抛出一个异常并不实用，但当和其他有用的错误消息或者debug工具结合起来的话，你就可以检测那些有问题的端砚。你还可以检查一行语句是否是断言，如下：
+`try {
+  // ...
+}
+catch (e) {
+  if (e instanceof AssertException) {
+    // ...
+  }
+}`
+这句话可以像C或Java那样：
+`assert(obj != null, 'Object is null');`
+如果对象可能为null，那下面的消息会打印出来：
+`uncaught exception: AssertException: Object is null`
 
 ###Static Local Variables
+静态本地变量。一些语言类似c++支持静态值的概念；他们是可以在函数间保存值的本地变量。js没有static关键字或是支持这种技术。然而，事实上方法也是对象会模拟对象特性。办法是把静态变量作为类属性。假设我们想要创建一个计数器方法：
+`function count() {
+  if (typeof count.i == 'undefined') {
+    count.i = 0;
+  }
+  return count.i++;
+}`
+当你第一次调用count，count.i的值undefined，所以如果把0赋值给count.i。将会在方法间保存这个值，它会被作为静态变量访问。
+我们也可以把上面的代码简化一下，如下：
+`function count() {
+  return count.i++;
+}
+count.i = 0;`
+第一个逻辑性比较强，第二个更有效，选择取决于你。
 
 ###null, undefined, and delete
+在undefined和null这两个值上，js和其他程序语言有很大的不同，对新手来说可能会导致困惑。null是一个特殊的值代表‘没值’。null同样也是一个特别的对象，因为typeof null返回'object'。
+另一方面，undefined意味着变量未声明，或者说已经声明但没有给予值。下面的操作都将返回'undefined'：
+
+`// i is not declared anywhere in code
+alert(typeof i);
+
+var i;
+alert(typeof i);`
+
+虽然null和undefined是连个不同的类型，但==操作符显示它们是相等的，但===操作则不相等。
+js还有一个delete操作，会导致'undefines'，你可以在对象和数组上应用它。变量无法被deleted，但是全局变量可以：
+`var obj = {
+  val: 'Some string'
+}
+
+alert(obj.val); // displays 'Some string'
+
+delete obj.val;
+alert(obj.val); // displays 'undefined'`
 
 ###Deep Nesting of Objects
 如果你需要对一个深度嵌套对象做多部操作，存储一个新的新的引用对象要比每次单纯引用它的临时变量要好。例如，假设你要对一个文本框做一个重要操作：
