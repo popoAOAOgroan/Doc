@@ -48,7 +48,7 @@ for (/* each piece */) {
   str += piece; // bad for performance!
 }
 return str;`
-这个方法会导致太多的中间件字符和连接操作，并且降低整体性能。
+这个方法会导致太多的中间件字符和连接操作，并且降低整体性能。（因为js中操作连接字符串的过程是，拿'a'+'b'举例，先创建2个字符的空间放入‘ab’，再把a和b消除掉）
 一个更好的实现方法是使用Array.join，这个方法会连接所有的数组元素到一个字符串里：
 `var tmp = [];
 for (/* each piece */) {
@@ -79,3 +79,67 @@ g = bind(obj, obj.buildMessage);
 alert(g('Smith')); // displays: Name is Smith
 `
 ###Sorting With a Custom Comparison Function
+排序是一个常用任务。js为数组提供一个排序的方法。然而，这个排序方法默认按字母排序。非字符串类型会在排序前被转成字符串，所以在排序数字时，结果可能与我们所期望不一样：
+
+`var list = [5, 10, 2, 1];
+list.sort()
+// list is now: [1, 10, 2, 5]`
+
+解释这种现象其实狠简单：数字被转成字符串后才被排序，所以10变成了‘10’，2变成了‘2’。js解析器会比较字符串中的第一个字符，如果str1小于str2的第一个字符，那就比str2小。在我们的例子里，‘1’比‘2’小，所以‘10’比‘2’小。
+
+不幸的是，js提供一个方法去重写排序，这个方法定义如何排序内容，这需要比较2项间的参数，且返回：
+1.如果a<b,值就比0小。
+2.如果a==b就为0.
+3.如果a>b，值就比0大。
+
+这样一种为比较字符的程序微不足道：
+`function cmp(a, b) {
+  return a - b;
+}`
+现在我们就可以用我们自己的方法来排序数组：
+`var list = [5, 10, 2, 1];
+list.sort(cmp);
+// list is now: [1, 2, 5, 10]`
+Array.sort()的易用性在于它可以支持更复杂的排序方式，比如说你有一个论坛表单数组，每一个表单看起来就像这样：
+`var post = {
+  id: 1,
+  author: '...',
+  title: '...',
+  body: '...'
+}`
+如果你想要通过表单的id判断，用下面的方法：
+`function postCmp(a, b) {
+  return a.id - b.id;
+}`
+有理由说，使用浏览器原生的排序方法可以比实施一个js排序方法更有效。当然，如果有可能，数据应当在服务端就被排序好，所以非必要下无需使用（例如，当你希望在一个页面里得到多个排序列表的话）。
+
+###Assertion
+
+###Static Local Variables
+
+###null, undefined, and delete
+
+###Deep Nesting of Objects
+如果你需要对一个深度嵌套对象做多部操作，存储一个新的新的引用对象要比每次单纯引用它的临时变量要好。例如，假设你要对一个文本框做一个重要操作：
+`document.forms[0].elements[0]`
+这里推荐你存储一个文本框的新引用对象，并且使用这个变量代替上面的操作：
+`var field = document.forms[0].elements[0];`
+每一次对这个对象的检索都是一次操作，以检索一个属性，在一个循环中，这些操作做加起来就会爆炸，所以最好做一次，将对象存储在一个变量，并重新使用它。
+###Using Firebug
+Firefox又一个极好的js debug工具叫Firebug。
+###$ and $$
+`$('id')`
+通过id搜索，并快速返回一个DOM id为输入值的元素。
+`$$('css selector')`
+通过css选择器搜索，并快速返回一个DOM元素。
+
+###console.log(format, obj1, ...)
+console对象提供方法用以显示condole的日志消息。这个比用alert有用的多。console.log()方法类似于c语言中的printf。可以传入一个格式化的string和其他参数，在控制台输出格式化后的字符串：
+`var i = 1;
+console.log('i value is %d', i);
+// prints:
+// i value is 3`
+###console.trace()
+此方法在执行的地方打印出堆栈，不需要任何参数。
+###inspect(obj)
+
