@@ -49,3 +49,11 @@ console.log(b);//["1richardgong", "2richardgong", "3richardgong", "3richardgong"
 
 ##some()
 some只返回true或false，遍历数组所有，如果其中一个返回true则true，不然则false。
+
+
+##reduce（）
+reduce() 方法接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始合并，最终为一个值。
+`arr.reduce(callback,[initialValue])`
+
+##reverse()
+reverse() 方法颠倒数组中元素的位置。第一个元素会成为最后一个，最后一个会成为第一个。
