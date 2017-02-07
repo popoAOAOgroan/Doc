@@ -20,6 +20,6 @@
 在组件完成更新后立即执行。在初始化时不会被执行。一般会在组件完成更新后被使用。例如清除notification文字等操作。
 
 ###componentWillUnmount
-主要用来执行一些必要的清理任务。例如清除setTimeout等函数，或者任意的在componentDidMount创建的DOM元素。
+该事件在组件即将被移除dom时会触发,主要用来执行一些必要的清理任务。例如清除setTimeout等函数，或者任意的在componentDidMount创建的DOM元素。
 
 

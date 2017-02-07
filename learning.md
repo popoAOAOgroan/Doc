@@ -17,10 +17,11 @@ ad ref（how to get form value (done => setstate)）
 学习react-native, redux, ui lab
 学习express error handle
 学习nodejs websockte
-箭头函数
-闭包
-匿名函数
-回调函数
+箭头函数，闭包，匿名函数，回调函数（done）使用场景（done）
+charles（done）
+测试用例（done）
+angular2
+
 
 #ad
 
